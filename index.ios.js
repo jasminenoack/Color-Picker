@@ -1,20 +1,11 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Switch,
   Slider,
   Text,
   View,
   Dimensions
 } from 'react-native';
-import { Button } from 'react-native-material-design';
 
 var width = Dimensions.get('window').width;
 
@@ -46,7 +37,6 @@ let ColorSlider = React.createClass({
   }
 });
 
-// (value) => {this.setState({value: parseInt(value)})}
 let AwesomeProject = React.createClass({
   getInitialState: function () {
       return {
@@ -81,7 +71,7 @@ let AwesomeProject = React.createClass({
           alignItems: 'center',
           backgroundColor: `rgba(${this.state.red}, ${this.state.green}, ${this.state.blue}, ${this.state.opacity/100})`,
         }}>
-        <Text>Color Picker</Text>
+        <Text style={{fontSize: 20}}>Color Picker</Text>
         <ColorSlider
           color="red"
           value={this.state.red}
