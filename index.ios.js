@@ -63,6 +63,17 @@ let AwesomeProject = React.createClass({
   },
 
   render: function () {
+    let colors = ["red", "blue", "green", "opacity"]
+    const that = this;
+    let sliders = colors.map(function (color) {
+      return <ColorSlider
+        key={color}
+        color={color}
+        value={that.state[color]}
+        maxValue={color === "opacity" ? 100 : null}
+        onValueChange={that.createChangeColorFunction(color).bind(that)}
+        />
+    })
     return (
       <View
         style={{
@@ -72,27 +83,7 @@ let AwesomeProject = React.createClass({
           backgroundColor: `rgba(${this.state.red}, ${this.state.green}, ${this.state.blue}, ${this.state.opacity/100})`,
         }}>
         <Text style={{fontSize: 20}}>Color Picker</Text>
-        <ColorSlider
-          color="red"
-          value={this.state.red}
-          onValueChange={this.createChangeColorFunction("red").bind(this)}
-          />
-        <ColorSlider
-          color="blue"
-          value={this.state.blue}
-          onValueChange={this.createChangeColorFunction("blue").bind(this)}
-          />
-        <ColorSlider
-          color="green"
-          value={this.state.green}
-          onValueChange={this.createChangeColorFunction("green").bind(this)}
-          />
-          <ColorSlider
-            color="opacity"
-            value={this.state.opacity}
-            maxValue={100}
-            onValueChange={this.createChangeColorFunction("opacity").bind(this)}
-            />
+        { sliders }
       </View>
     );
   }
